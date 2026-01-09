@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的足迹地图</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+          crossorigin=""/>
+
+    <style>
+        /* --- Global Layout --- */
+        body { margin: 0; padding: 0; }
+        /* Ensure map takes full screen height */
+        #map { width: 100%; height: 100vh; }
+
+        /* --- Custom Popup Styling --- */
+        .my-popup-content { 
+            font-family: "Microsoft YaHei", sans-serif; 
+            min-width: 200px; 
+        }
+        .popup-title { 
+            margin: 0; 
+            padding-bottom: 5px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            color: #333; 
+            border-bottom: 2px solid #3498db; 
+        }
+        .popup-desc { 
+            margin-top: 8px; 
+            font-size: 14px; 
+            color: #666; 
+            line-height: 1.5; 
+        }
+        
+        /* --- UI Controls (Floating Buttons) --- */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            /* Center element horizontally */
+            transform: translateX(-50%); 
+            /* Ensure controls layer is above the map */
+            z-index: 1000;   
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 25px;
+            font-size: 16px;
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: white;
+            border: none;
+            border-radius: 50px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        /* Button Interaction States */
+        .nav-btn:hover { background-color: #f0f0f0; }
+        .nav-btn:active { background-color: #ddd; }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div class="controls">
+        <button id="prevBtn" class="nav-btn">⬅️ 上一步</button>
+        <button id="nextBtn" class="nav-btn">下一步 ➡️</button>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
