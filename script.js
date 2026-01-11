@@ -72,7 +72,7 @@ function showEvent(index) {
     // Action: Slow cinematic flight, open popup AFTER arrival.
     else if (!isVisible) {
         map.flyTo(item.coordinates, targetZoom, {
-            duration: 2.5,      // Slower animation
+            duration: 1.5,      // Slower animation
             easeLinearity: 0.1  // High arc (zoom out then in)
         });
 
@@ -87,7 +87,7 @@ function showEvent(index) {
     else {
         currentMarker.openPopup(); // Immediate feedback
         map.flyTo(item.coordinates, targetZoom, {
-            duration: 1,        // Faster animation
+            duration: 0.5,        // Faster animation
             easeLinearity: 0.8  // Low arc (flatter movement)
         });
     }
