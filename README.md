@@ -1,6 +1,9 @@
 # My Footprint Map 🌍
 A lightweight, interactive timeline map built with HTML, CSS, and JavaScript (Leaflet.js). This project visualizes a personal life journey, automatically handling camera transitions and animations based on locations.
 
+## 🌏 Live Demo
+Experience the interactive map online: **[https://xzzit.github.io/my_footprint/](https://xzzit.github.io/my_footprint/)**
+
 ## 🚀 Quick Start
 1. Open your terminal/command prompt in the project directory.
 
