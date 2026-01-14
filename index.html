@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
     <title>我的足迹地图</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
@@ -64,11 +65,49 @@
         }
         .nav-btn:hover { background-color: #f0f0f0; }
         .nav-btn:active { background-color: #ddd; }
+
+        /* --- Secret Archive Dropdown --- */
+        .chapter-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-left: 5px solid #c0392b;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .chapter-label {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #chapter-select {
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background: #fff;
+            cursor: pointer;
+            min-width: 150px;
+        }
     </style>
 </head>
 
 <body>
     <div id="map"></div>
+
+    <div class="chapter-control">
+    <div class="chapter-label">🗂️ 历史档案检索</div>
+    <select id="chapter-select">
+        <option value="" disabled selected>-- 跳转至历史时期 --</option>
+        </select>
+    </div>
 
     <div class="controls">
         <button id="prevBtn" class="nav-btn">⬅️ 上一步</button>

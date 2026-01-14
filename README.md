@@ -52,4 +52,4 @@ Example:
 | **description** | Detailed text body below the title. |
 | **coordinates** | The geographic location.<br>_Tip: Right-click on Google Maps to copy Lat, Lng directly._ |
 | **zoom** | Controls camera height.<br>• **Low (4-7):** Country/Province view (Far).<br>• **High (14-16):** Street/Building view (Close). |
-| **type** | Reserved for future use. Currently serves as a backup field (leave empty). |
+| **type** | **Archive Chapter / Era Name**. Defines the category for the top-right "Archive Menu". <br>⚠️ **Note:** Only assign this to the *first* event of a new period (Sparse Indexing). Leave empty for others. |

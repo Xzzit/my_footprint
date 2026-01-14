@@ -22,14 +22,62 @@ function loadLifeData() {
         .then(data => {
             lifeEvents = data;
             console.log(`Data loaded: ${lifeEvents.length} events found.`);
-            
+
+            // --- Initialize Archive Menu ---
+            const chapterSelect = document.getElementById('chapter-select');
+
             // Render the first event immediately
             showEvent(currentIndex);
+            
+            // Populate dropdown
+            lifeEvents.forEach((item, index) => {
+                if (item.type && item.type.trim() !== "") {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.text = item.type;
+                    chapterSelect.appendChild(option);
+                }
+            });
+
+            // Handle dropdown selection
+            chapterSelect.onchange = (e) => {
+                const selectedIndex = parseInt(e.target.value);
+                
+                if (!isNaN(selectedIndex)) {
+                    currentIndex = selectedIndex;
+                    showEvent(currentIndex);
+                    e.target.blur(); 
+                }
+            };
         })
         .catch(error => console.error('Failed to load data:', error));
 }
 
 // --- 4. Core Rendering Logic ---
+// --- UI Helper: Sync Archive Menu with Current Event ---
+function syncChapterMenu(activeIndex) {
+    const chapterSelect = document.getElementById('chapter-select');
+    const options = chapterSelect.options;
+    
+    let targetValue = ""; // Default to unselected
+
+    // Iterate through chapter options (skipping the default placeholder)
+    for (let i = 1; i < options.length; i++) {
+        const chapterStartIndex = parseInt(options[i].value);
+        
+        // Find the latest chapter that starts before or at the current index
+        if (activeIndex >= chapterStartIndex) {
+            targetValue = options[i].value;
+        } else {
+            // Stop checking once we reach a chapter that hasn't started yet
+            break;
+        }
+    }
+
+    // Update the dropdown to reflect the current era
+    chapterSelect.value = targetValue;
+}
+
 // Renders the marker and handles camera movement for a specific event
 function showEvent(index) {
     const item = lifeEvents[index];
@@ -91,6 +139,8 @@ function showEvent(index) {
             easeLinearity: 0.8  // Low arc (flatter movement)
         });
     }
+
+    syncChapterMenu(index);
 }
 
 // --- 5. Interaction Controls ---
