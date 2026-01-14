@@ -12,53 +12,62 @@
     <style>
         /* --- Global Layout --- */
         body { margin: 0; padding: 0; }
-        /* Ensure map takes full screen height */
         #map { width: 100%; height: 100vh; }
 
         /* --- Custom Popup Styling --- */
-        .my-popup-content { 
-            font-family: "Microsoft YaHei", sans-serif; 
-            min-width: 200px; 
+        .my-popup-content {
+            font-family: "Microsoft YaHei", sans-serif;
+            min-width: 220px;
         }
-        .popup-title { 
-            margin: 0; 
-            padding-bottom: 5px; 
-            font-size: 16px; 
-            font-weight: bold; 
-            color: #333; 
-            border-bottom: 2px solid #3498db; 
+        .popup-title {
+            margin: 0;
+            padding-bottom: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 3px solid #c0392b;
         }
-        .popup-desc { 
-            margin-top: 8px; 
+        .popup-desc {
+            margin-top: 8px;
             font-size: 14px; 
-            color: #666; 
-            line-height: 1.5; 
+            color: #555; 
+            line-height: 1.6; 
+            text-align: justify;
         }
         
-        /* --- UI Controls (Floating Buttons) --- */
+        /* --- UI Controls Container --- */
         .controls {
             position: fixed;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
-            /* Center element horizontally */
-            transform: translateX(-50%); 
-            /* Ensure controls layer is above the map */
+            transform: translateX(-50%);
             z-index: 1000;   
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 15px;
         }
         
+        /* --- Standard Navigation Buttons --- */
         .nav-btn {
-            padding: 10px 25px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 15px;
             font-family: "Microsoft YaHei", sans-serif;
-            background-color: white;
-            border: none;
-            border-radius: 50px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.2s;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            white-space: nowrap;
         }
+        .nav-btn:hover {
+            background-color: #333;
+            color: #333;
+            transform: translateY(-2px);
+        }
+        .nav-btn:active { transform: translateY(0); }
         
         /* Button Interaction States */
         .nav-btn:hover { background-color: #f0f0f0; }
@@ -74,8 +83,8 @@
         <button id="nextBtn" class="nav-btn">下一步 ➡️</button>
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
 
     <script src="script.js"></script>
