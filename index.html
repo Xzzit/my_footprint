@@ -78,6 +78,7 @@
             z-index: 1000;
             border-left: 5px solid #c0392b;
             font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
         }
         .chapter-label {
             font-size: 15px;
@@ -95,6 +96,11 @@
             background: #fff;
             cursor: pointer;
             min-width: 150px;
+            text-align: center;
+            text-align-last: center;
+        }
+        #chapter-select option {
+            text-align: center;
         }
     </style>
 </head>
@@ -103,9 +109,9 @@
     <div id="map"></div>
 
     <div class="chapter-control">
-    <div class="chapter-label">🗂️ 历史档案检索</div>
+    <div class="chapter-label">🗓️ 时光节点</div>
     <select id="chapter-select">
-        <option value="" disabled selected>-- 跳转至历史时期 --</option>
+        <option value="" disabled selected>-- 跳转至 --</option>
         </select>
     </div>
 
