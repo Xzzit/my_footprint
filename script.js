@@ -119,6 +119,13 @@ function showEvent(index) {
     // Scenario 2: Long Distance / Off-screen (Target not visible)
     // Action: Slow cinematic flight, open popup AFTER arrival.
     else if (!isVisible) {
+        // Capture the marker for this specific transition. If the user
+        // navigates again before 'moveend' fires, `currentMarker` will have
+        // been reassigned (and this marker removed from the map) by then;
+        // opening the popup on this captured reference — rather than the
+        // mutable global — keeps a stale callback from popping the wrong
+        // marker's popup.
+        const marker = currentMarker;
         map.flyTo(item.coordinates, targetZoom, {
             duration: 1.5,      // Slower animation
             easeLinearity: 0.1  // High arc (zoom out then in)
@@ -126,7 +133,7 @@ function showEvent(index) {
 
         // Event listener: Open popup only when flight ends
         map.once('moveend', () => {
-            currentMarker.openPopup();
+            marker.openPopup();
         });
     }
 
@@ -146,12 +153,14 @@ function showEvent(index) {
 // --- 5. Interaction Controls ---
 // Handle "Next" button click (Circular navigation)
 document.getElementById('nextBtn').addEventListener('click', () => {
+    if (lifeEvents.length === 0) return; // Guard against data.json not having loaded yet
     currentIndex = (currentIndex + 1) % lifeEvents.length;
     showEvent(currentIndex);
 });
 
 // Handle "Previous" button click (Circular navigation)
 document.getElementById('prevBtn').addEventListener('click', () => {
+    if (lifeEvents.length === 0) return; // Guard against data.json not having loaded yet
     currentIndex = (currentIndex - 1 + lifeEvents.length) % lifeEvents.length;
     showEvent(currentIndex);
 });
